@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-end-deployment
+  namespace: back-end-ns
+  labels:
+    app: back-end
+    tier: back-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: back-end
+      tier: back-end
+  template:
+    metadata:
+      labels:
+        app: back-end
+        tier: back-end
+    spec:
+      containers:
+      - image: postgres
+        name: postgresql-container
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "tejas-postgres"
