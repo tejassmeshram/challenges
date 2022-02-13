@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-processing-tier-deployment
+  namespace: data-processor-ns
+  labels:
+    app: data-processing-tier
+    tier: data-processing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: data-processing-tier
+      tier: data-processing
+  template:
+    metadata:
+      labels:
+        app: data-processing-tier
+        tier: data-processing
+    spec:
+      containers:
+      - image: tejassmeshram/data-processor
+        name: data-processor
