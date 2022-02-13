@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-end-service
+  namespace: front-end-ns
+  labels:
+    app: front-end
+    tier: front-end
+spec:
+  type: NodePort
+  ports:
+  - port: 8088
+    targetPort: 8088
+    nodePort: 31234
+  selector:
+    app: front-end
+    tier: front-end
